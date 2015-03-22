@@ -11,12 +11,12 @@ import RPi.GPIO as GPIO
 import time
 import random
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(2, GPIO.IN) # Pin 3 (sv. Pinne 3)
-# Pin 6 is GND. (sv. Pinne 6 är jord.)
+GPIO.setup(2, GPIO.IN) # GPIO2 = P1-03
+# P1-06 is GND. (sv. P1-06 är jord.)
 # (sv. koppla sladdar till pinnarna och en del av ett komponentben till en sladd som prob.
 #  Peta med komponentbenet på metalldelen på den andra sladden för att kasta tärningen.) 
-GPIO.setup(23, GPIO.OUT) # Pin 16 (sv. Pinne 16)
-# Pin 14 is GND. (sv. Pinne 14 är jord.)
+GPIO.setup(23, GPIO.OUT) # GPIO23 = P1-16
+# P1-14 is GND. (sv. P1-14 är jord.)
 # (sv. Koppla in lysdiod och resistor i serie mellan pinnarna med 3 sladdar.)
 
 for i in range(3): # Danish salute! (sv. Dansk lösen!)
