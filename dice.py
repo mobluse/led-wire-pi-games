@@ -10,7 +10,8 @@
 import RPi.GPIO as GPIO 
 import time
 import random
-print(GPIO.RPI_REVISION)
+
+print(GPIO.RPI_INFO)
 GPIO.setmode(GPIO.BOARD)
 GPIO2 = 3 # GPIO2 = P1-03, but GPIO0 = P1-03 on RPi 1 B Rev. 1. 
 GPIO.setup(GPIO2, GPIO.IN)
@@ -33,15 +34,25 @@ time.sleep(8) # Show all colors. (sv. Visa alla färger.)
 GPIO.output(GPIO23, False)
 time.sleep(1)
 
-while True:
-    if not GPIO.input(GPIO2):
-        dice = random.choice(range(1, 7))
-        print(dice)
-        for i in range(dice):
-            GPIO.output(GPIO23, True)
-            time.sleep(0.2)
+try:
+    while True:
+        if not GPIO.input(GPIO2):
+            dice = random.choice(range(1, 7))
+            print(dice)
+            for i in range(dice):
+                GPIO.output(GPIO23, True)
+                time.sleep(0.2)
+                GPIO.output(GPIO23, False)
+                time.sleep(0.3)
+        else:
             GPIO.output(GPIO23, False)
-            time.sleep(0.3)
-    else:
-        GPIO.output(GPIO23, False)
-    time.sleep(0.1)
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    print("Ctrl+C tryckt!")
+
+except:
+    print("Annat undantag.")
+
+finally:
+    GPIO.cleanup()
