@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Dice (sv. Tärning) Copyright (C) 2015 Mikael O. Bonnier, Lund, Sweden. mobluse on Scratch & GitHub
+# Dice 2 (sv. Tärning 2) Copyright (C) 2015 Mikael O. Bonnier, Lund, Sweden. mobluse on Scratch & GitHub
 # This program comes with ABSOLUTELY NO WARRANTY.
 # This is free software, and you are welcome to redistribute it under certain conditions.
 # License: GPLv3+ http://www.gnu.org/copyleft/gpl.html
@@ -15,7 +15,7 @@ print(GPIO.RPI_INFO)
 GPIO.setmode(GPIO.BOARD)
 GPIO2 = 3 # GPIO2 = P1-03, but GPIO0 = P1-03 on RPi 1 B Rev. 1. 
 GPIO.setup(GPIO2, GPIO.IN)
-GPIO.add_event_detect(GPIO2, GPIO.FALLING, bouncetime=200)
+GPIO.add_event_detect(GPIO2, GPIO.FALLING, bouncetime=200) # New! (sv. Nytt!)
 # P1-06 = GND. (sv. P1-06 = jord.)
 # (sv. koppla sladdar till pinnarna och en del av ett komponentben till en sladd som prob.
 #  Peta med komponentbenet på metalldelen på den andra sladden för att kasta tärningen.) 
@@ -37,7 +37,7 @@ time.sleep(1)
 
 try:
     while True:
-        if GPIO.event_detected(GPIO2):
+        if GPIO.event_detected(GPIO2): # New! (sv. Nytt!)
             dice = random.choice(range(1, 7))
             print(dice)
             for i in range(dice):
